@@ -3,16 +3,16 @@ import HERO_IMAGE from "../assets/images/illustration-working.svg";
 
 const Hero = () => {
     return (
-        <div className="flex flex-col gap-8 max-w-screen-xl mx-auto">
-            <div
-                className="min-h-[400px] bg-no-repeat bg-[24px_top] [backgroundSize:140%]"
-                style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-            ></div>
-            <div className="px-6 text-center">
-                <h1 className="max-w-[14ch] text-5xl text-[var(--gray-950)] mx-auto font-bold">
+        <div className="flex flex-col lg:flex-row-reverse gap-16 lg:gap-4 lg:items-center max-w-screen-xl mx-auto overflow-x-hidden lg:mt-8">
+            <img
+                className="block ml-6 h-auto min-w-[550px] lg:min-w-[600px]"
+                src={HERO_IMAGE}
+            />
+            <div className="px-4 text-center lg:text-left">
+                <h1 className="max-w-[14ch] text-5xl lg:text-6xl text-[var(--gray-950)] mx-auto lg:mx-0 font-bold">
                     More than just shorter links
                 </h1>
-                <p className="py-8 text-[var(--gray-500)] font-medium">
+                <p className="py-8 text-[var(--gray-500)] font-medium lg:py-0 lg:pt-4 lg:pb-8">
                     Build your brand’s recognition and get detailed insights on
                     how your links are performing.
                 </p>
