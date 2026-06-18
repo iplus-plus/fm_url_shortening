@@ -3,7 +3,7 @@ import HERO_IMAGE from "../assets/images/illustration-working.svg";
 
 const Hero = () => {
     return (
-        <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4 lg:items-center max-w-screen-xl mx-auto overflow-x-hidden lg:mt-8">
+        <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4 lg:items-center max-w-screen-xl mx-auto overflow-x-hidden pb-48 lg:pt-8">
             <img
                 className="block h-auto w-full lg:mx-0 ml-6 min-w-[600px] lg:px-0"
                 src={HERO_IMAGE}

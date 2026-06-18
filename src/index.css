@@ -18,3 +18,9 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 18px;
 }
+
+@media screen and (min-width: 1024px){
+  .benefit {
+    transform: translateY(var(--transY));
+  }
+}
