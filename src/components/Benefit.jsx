@@ -19,7 +19,7 @@ const BENEFIT_DATA = [
         paragraph:
             "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.",
         icon: DetailIcon,
-        translateY: "32px"
+        translateY: "40px"
     },
     {
         id: 3,
@@ -27,16 +27,18 @@ const BENEFIT_DATA = [
         paragraph:
             "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.",
         icon: CustomizeIcon,
-        translateY: "64px"
+        translateY: "80px"
     }
 ];
 const Benefit = () => {
     return (
-        <div className="relative bg-[var(--gray-400)] pt-8 pb-24 px-6">
+        <div className="relative bg-[var(--purple-transparent)] pt-8 pb-52 px-6">
             <InputLink />
-            <div className="text-center mt-36 px-6 mb-20">
-                <h2 className="font-bold text-3xl mb-8">Advanced Statistics</h2>
-                <p className="text-[var(--gray-900)] font-medium">
+            <div className="text-center mt-52 mb-32 px-6 ">
+                <h2 className="font-bold text-3xl mb-8 lg:text-4xl">
+                    Advanced Statistics
+                </h2>
+                <p className="text-[var(--gray-500)] font-medium max-w-[540px] mx-auto">
                     Track how your links are performing across the web with our
                     advanced statistics dashboard.
                 </p>
@@ -72,17 +74,18 @@ const BenefitList = () => {
                 <React.Fragment key={b.id}>
                     <div
                         style={{ "--transY": b.translateY }}
-                        className={`bg-white p-8 rounded-lg text-center relative benefit`}
-                        
+                        className="bg-white p-10 rounded-lg text-center lg:text-left relative benefit shadow-lg"
                     >
-                        <div className="bg-[var(--gray-900)] w-fit mx-auto p-6 rounded-full flex items-center justify-center absolute -top-[44px] left-0 right-0">
+                        <div className="bg-[var(--purple-950)] w-fit mx-auto p-6 rounded-full flex items-center justify-center lg:mx-0 lg:left-6 absolute -top-[44px] left-0 right-0">
                             <img src={b.icon} />
                         </div>
                         <h3 className="mt-12 font-bold text-xl mb-4">
                             {b.title}
                         </h3>
 
-                        <p className="text-base">{b.paragraph}</p>
+                        <p className="text-base text-[var(--gray-500)]">
+                            {b.paragraph}
+                        </p>
                     </div>
                     {b.id === 3 ? null : (
                         <div className="w-4 h-32 bg-[var(--blue-400)] mx-auto lg:my-auto lg:h-4 lg:w-32"></div>

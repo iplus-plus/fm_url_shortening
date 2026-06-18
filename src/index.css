@@ -5,6 +5,7 @@
 :root {
     --blue-400: hsl(180, 66%, 49%);
     --purple-950: hsl(257, 27%, 26%);
+    --purple-transparent: hsl(257, 27%, 26%, 0.1);
 
     --red-400: hsl(0, 87%, 67%);
 
@@ -19,8 +20,15 @@ body {
     font-size: 18px;
 }
 
-@media screen and (min-width: 1024px){
-  .benefit {
-    transform: translateY(var(--transY));
-  }
+.bgBoost {
+    background-image: url("./assets/images/bg-boost-mobile.svg");
+}
+
+@media screen and (min-width: 1024px) {
+    .benefit {
+        transform: translateY(var(--transY));
+    }
+    .bgBoost {
+        background-image: url("./assets/images/bg-boost-desktop.svg");
+    }
 }
