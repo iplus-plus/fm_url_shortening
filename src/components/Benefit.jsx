@@ -32,28 +32,25 @@ const BENEFIT_DATA = [
 ];
 const Benefit = () => {
     return (
-        <div className="relative bg-[var(--purple-transparent)] pt-8 pb-52 px-6">
+        <section className="relative bg-[var(--purple-transparent)] pt-8 pb-52 px-6">
             <InputLink />
-            <div className="text-center mt-52 mb-32 px-6 ">
-                <h2 className="font-bold text-3xl mb-8 lg:text-4xl">
+            <div className="text-center mt-48 mb-32 px-6 max-w-screen-xl mx-auto">
+                <h2 className="font-bold text-3xl mb-6 lg:text-4xl">
                     Advanced Statistics
                 </h2>
-                <p className="text-[var(--gray-500)] font-medium max-w-[540px] mx-auto">
+                <p className="text-[var(--gray-500)] font-medium max-w-[540px] mx-auto leading-loose">
                     Track how your links are performing across the web with our
                     advanced statistics dashboard.
                 </p>
             </div>
             <BenefitList />
-        </div>
+        </section>
     );
 };
 const InputLink = () => {
     return (
-        <form className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[50px] w-[80%] rounded-xl left-0 right-0 mx-auto">
-            <div
-                style={{ backgroundImage: `url(${InputBg})` }}
-                className="p-6 lg:p-12 rounded-xl flex flex-col gap-4 bg-no-repeat bg-right-top *:rounded-lg lg:flex-row"
-            >
+        <form className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[75px] w-[80%] lg:max-w-screen-xl rounded-xl left-0 right-0 mx-auto">
+            <div className="p-6 bgInput lg:p-12 rounded-xl flex flex-col gap-4 bg-no-repeat bg-right-top *:rounded-lg lg:flex-row">
                 <input
                     type="text"
                     className="block p-4 lg:flex-1"
@@ -71,7 +68,7 @@ const BenefitList = () => {
     return (
         <div className="flex flex-col lg:flex-row max-w-screen-xl mx-auto">
             {BENEFIT_DATA.map(b => (
-                <React.Fragment key={b.id}>
+                <div className="flex flex-col lg:flex-row" key={b.id}>
                     <div
                         style={{ "--transY": b.translateY }}
                         className="bg-white p-10 rounded-lg text-center lg:text-left relative benefit shadow-lg"
@@ -90,7 +87,7 @@ const BenefitList = () => {
                     {b.id === 3 ? null : (
                         <div className="w-4 h-32 bg-[var(--blue-400)] mx-auto lg:my-auto lg:h-4 lg:w-32"></div>
                     )}
-                </React.Fragment>
+                </div>
             ))}
         </div>
     );

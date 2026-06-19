@@ -34,12 +34,22 @@ const Nav = ({ navOpen, setNavOpen }) => {
         >
             <ul className="max-lg:border-b max-lg:pb-6">
                 {NAV_LINKS_SECTION.map(navlink => (
-                    <Link to="#" key={navlink} name={navlink} onClick={() => setNavOpen(false)} />
+                    <Link
+                        to="#"
+                        key={navlink}
+                        name={navlink}
+                        onClick={() => setNavOpen(false)}
+                    />
                 ))}
             </ul>
             <ul>
                 {NAV_LINKS_AUTH.map(navlink => (
-                    <Link to="#" key={navlink} name={navlink} onClick={() => setNavOpen(false)} />
+                    <Link
+                        to="#"
+                        key={navlink}
+                        name={navlink}
+                        onClick={() => setNavOpen(false)}
+                    />
                 ))}
             </ul>
         </nav>
@@ -48,11 +58,11 @@ const Nav = ({ navOpen, setNavOpen }) => {
 
 const Link = ({ name, to, onClick }) => {
     return (
-        <li className="w-full lg:w-auto text-center">
+        <li className="w-full text-sm lg:w-auto text-center">
             <a
                 href={to}
                 onClick={onClick}
-                className={`block font-bold text-white lg:text-[var(--gray-400)] ${name.toLowerCase() === "sign up" ? "rounded-3xl text-white lg:text-white px-6 py-2 bg-[var(--blue-400)] w-full" : ""}`}
+                className={`block font-bold text-white lg:text-[var(--gray-500)] ${name.toLowerCase() === "sign up" ? "rounded-full text-white lg:text-white px-6 py-2 bg-[var(--blue-400)] w-full" : ""}`}
             >
                 {name}
             </a>

@@ -3,6 +3,7 @@ import Hero from "./Hero.jsx";
 import Benefit from "./Benefit.jsx";
 import BoostLink from "./BoostLink.jsx";
 
+
 const Main = () => {
     return (
         <main>

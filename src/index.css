@@ -23,6 +23,9 @@ body {
 .bgBoost {
     background-image: url("./assets/images/bg-boost-mobile.svg");
 }
+.bgInput {
+    background-image: url("./assets/images/bg-shorten-mobile.svg");
+}
 
 @media screen and (min-width: 1024px) {
     .benefit {
@@ -30,5 +33,8 @@ body {
     }
     .bgBoost {
         background-image: url("./assets/images/bg-boost-desktop.svg");
+    }
+    .bgInput {
+        background-image: url("./assets/images/bg-shorten-desktop.svg");
     }
 }
