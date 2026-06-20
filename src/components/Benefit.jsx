@@ -32,9 +32,9 @@ const BENEFIT_DATA = [
 ];
 const Benefit = () => {
     return (
-        <section className="relative bg-[var(--purple-transparent)] pt-8 pb-52 px-6">
+        <section className="relative bg-[var(--purple-transparent)] pt-8 pb-52">
             <InputLink />
-            <div className="text-center mt-48 mb-32 px-6 max-w-screen-xl mx-auto">
+            <div className="text-center mt-48 mb-32 px-6 center">
                 <h2 className="font-bold text-3xl mb-6 lg:text-4xl">
                     Advanced Statistics
                 </h2>
@@ -49,11 +49,11 @@ const Benefit = () => {
 };
 const InputLink = () => {
     return (
-        <form className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[75px] w-[80%] lg:max-w-screen-xl rounded-xl left-0 right-0 mx-auto">
+        <form className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[75px] rounded-xl left-0 right-0 center">
             <div className="p-6 bgInput lg:p-12 rounded-xl flex flex-col gap-4 bg-no-repeat bg-right-top *:rounded-lg lg:flex-row">
                 <input
                     type="text"
-                    className="block p-4 lg:flex-1"
+                    className="block p-4 w-auto lg:flex-1"
                     placeholder="Shorten a link here..."
                 />
                 <button className="bg-[var(--blue-400)] p-4 capitalize font-bold text-white">
@@ -66,7 +66,7 @@ const InputLink = () => {
 
 const BenefitList = () => {
     return (
-        <div className="flex flex-col lg:flex-row max-w-screen-xl mx-auto">
+        <div className="flex flex-col lg:flex-row center">
             {BENEFIT_DATA.map(b => (
                 <div className="flex flex-col lg:flex-row" key={b.id}>
                     <div

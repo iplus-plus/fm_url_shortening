@@ -7,8 +7,8 @@ const NAV_LINKS_AUTH = ["Login", "Sign Up"];
 const Navbar = () => {
     const [navOpen, setNavOpen] = useState(false);
     return (
-        <header className="px-6 py-8 relative">
-            <div className="flex items-center justify-between lg:justify-start gap-12 max-w-screen-xl mx-auto">
+        <header className="py-8 relative">
+            <div className="flex items-center justify-between lg:justify-start gap-12 center">
                 <img className="" src={LOGO} alt="logo" />
                 <Nav navOpen={navOpen} setNavOpen={setNavOpen} />
                 <button

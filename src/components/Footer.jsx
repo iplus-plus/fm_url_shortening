@@ -22,7 +22,7 @@ const SOCIAL_ICON = [facebookIcon, twitterIcon, pinterestIcon, instagramIcon];
 const Footer = () => {
     return (
         <footer className="bg-[var(--gray-950)] py-16 text-center lg:text-left">
-            <div className="flex px-6 flex-col items-center gap-14 max-w-screen-xl mx-auto text-white lg:flex-row lg:justify-between lg:items-start">
+            <div className="flex flex-col items-center gap-14 center text-white lg:flex-row lg:justify-between lg:items-start">
                 <p className="font-bold text-3xl capitalize">shortly</p>
                 <div className="flex flex-col gap-12 lg:gap-20 lg:flex-row">
                     {FOOTER_DATA.map(f => (
@@ -43,8 +43,8 @@ const Footer = () => {
                         </div>
                     ))}
                     <div className="flex gap-6">
-                        {SOCIAL_ICON.map(s => (
-                            <a key={s}>
+                        {SOCIAL_ICON.map((s, i) => (
+                            <a key={i}>
                                 <img className="size-7" src={s} />
                             </a>
                         ))}

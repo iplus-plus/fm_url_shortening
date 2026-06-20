@@ -20,6 +20,12 @@ body {
     font-size: 18px;
 }
 
+.center {
+    margin-inline: 5%;
+}
+.heroBg{
+  background-image: url('./assets/images/illustration-working.svg');
+}
 .bgBoost {
     background-image: url("./assets/images/bg-boost-mobile.svg");
 }
