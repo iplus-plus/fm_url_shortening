@@ -31,7 +31,12 @@ const BENEFIT_DATA = [
     }
 ];
 const Benefit = () => {
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState(() => {
+        return JSON.parse(localStorage.getItem("links")) || [];
+    });
+    useEffect(() => {
+        localStorage.setItem("links", JSON.stringify(results));
+    }, [results]);
 
     return (
         <section className="relative bg-[var(--purple-transparent)] pt-8 pb-52">
@@ -44,7 +49,7 @@ const Benefit = () => {
                 {results && (
                     <ul className="mb-4 flex flex-col gap-4 text-sm">
                         {results.map(r => (
-                            <Link key={r.id} data={r} />
+                            <Link key={r.id} data={r} setResults={setResults} />
                         ))}
                     </ul>
                 )}
@@ -162,7 +167,7 @@ const BenefitList = () => {
     );
 };
 
-const Link = ({ data }) => {
+const Link = ({ data, setResults }) => {
     const [copy, setCopy] = useState(false);
     const handleCopy = async text => {
         try {
@@ -175,17 +180,26 @@ const Link = ({ data }) => {
     };
     return (
         <li
-            className="bg-white rounded *:p-4 lg:*p-0 lg:p-4 text-left lg:flex lg:items-center font-medium shadow"
+            className="bg-white rounded [&_p]:p-4 lg:p-4 text-left lg:flex lg:items-center font-medium shadow lg:[&_p]:text-lg"
             key={data.id}
         >
-            <p className="border-b lg:flex-1">{data.long}</p>
+            <p className="border-b lg:border-b-0 lg:flex-1">{data.long}</p>
             <p className="text-[var(--blue-400)]">{data.short}</p>
             <button
                 disabled={copy}
                 onClick={() => handleCopy(data.short)}
-                className="bg-[var(--blue-400)] block p-0 rounded-lg mx-auto w-[calc(100%-2rem)] lg:mb-0 lg:w-[150px] mb-4 font-bold text-white text-base disabled:bg-[var(--purple-950)] transition-colors duration-200 lg:ml-4"
+                className="bg-[var(--blue-400)] block rounded-lg mx-auto w-[calc(100%-2rem)] lg:mb-0 lg:w-[150px] capitalize mb-3 font-bold p-3 text-white text-base disabled:bg-[var(--purple-950)] transition-colors duration-200 lg:ml-4"
+                
             >
                 {copy ? "copied" : "Copy"}
+            </button>
+            <button
+                onClick={() =>
+                    setResults(prev => prev.filter(item => item.id != data.id))
+                }
+                className="bg-red-500 capitalize block p-3 rounded-lg mx-auto w-[calc(100%-2rem)] lg:mb-0 lg:w-[150px] mb-4 font-bold text-white text-base hover:bg-red-300 transition-colors duration-200 lg:ml-4"
+            >
+                delete
             </button>
         </li>
     );

@@ -32,7 +32,7 @@ const Footer = () => {
                                 {f.links.map(l => (
                                     <li key={l}>
                                         <a
-                                            className="text-[var(--gray-400)] font-medium"
+                                            className="text-[var(--gray-400)] font-medium hover:text-[var(--blue-400)] transition-colors duration-200"
                                             href="#"
                                         >
                                             {l}
@@ -45,7 +45,7 @@ const Footer = () => {
                     <div className="flex gap-6">
                         {SOCIAL_ICON.map((s, i) => (
                             <a
-                                className="hover:bg-[var(--blue-400)] transition-colors duration-200"
+                                className="hover:text-[var(--blue-400)] transition-colors duration-200"
                                 key={i}
                             >
                                 <img className="size-7" src={s} />
