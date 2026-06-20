@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution](https://www.frontendmentor.io/solutions/url-shortening-api-with-react-9YidAKzAEX)
-- Live Site URL: [https://cleanuri.com/LreN10](https://cleanuri.com/LreN10)
+- Live Site URL: [https://fm-url-shortening-nine.vercel.app/](https://fm-url-shortening-nine.vercel.app/)
 
 ## My process
 
