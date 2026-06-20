@@ -81,16 +81,11 @@ const InputLink = ({ results, setResults }) => {
         }
         try {
             setLoading(true);
-            const res = await fetch(
-                "https://corsproxy.io/?" +
-                    encodeURIComponent("https://cleanuri.com/api/v1/shorten"),
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ url: value.toLowerCase() })
-                }
-            );
-
+            const res = await fetch("/api/shorten", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: value.toLowerCase() })
+            });
             const result = await res.json();
             if (result?.result_url) {
                 setResults(prev => [
@@ -105,6 +100,7 @@ const InputLink = ({ results, setResults }) => {
                     }
                 ]);
             }
+            console.log(result);
         } catch (error) {
             console.error(error);
         } finally {
