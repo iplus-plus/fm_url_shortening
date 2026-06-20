@@ -189,9 +189,8 @@ const Link = ({ data, setResults }) => {
                 disabled={copy}
                 onClick={() => handleCopy(data.short)}
                 className="bg-[var(--blue-400)] block rounded-lg mx-auto w-[calc(100%-2rem)] lg:mb-0 lg:w-[150px] capitalize mb-3 font-bold p-3 text-white text-base disabled:bg-[var(--purple-950)] transition-colors duration-200 lg:ml-4"
-                
             >
-                {copy ? "copied" : "Copy"}
+                {copy ? "copied!" : "Copy"}
             </button>
             <button
                 onClick={() =>
