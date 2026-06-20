@@ -44,7 +44,10 @@ const Footer = () => {
                     ))}
                     <div className="flex gap-6">
                         {SOCIAL_ICON.map((s, i) => (
-                            <a key={i}>
+                            <a
+                                className="hover:bg-[var(--blue-400)] transition-colors duration-200"
+                                key={i}
+                            >
                                 <img className="size-7" src={s} />
                             </a>
                         ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import InputBg from "../assets/images/bg-shorten-mobile.svg";
 import BrandIcon from "../assets/images/icon-brand-recognition.svg";
 import DetailIcon from "../assets/images/icon-detailed-records.svg";
@@ -31,11 +31,27 @@ const BENEFIT_DATA = [
     }
 ];
 const Benefit = () => {
+    const [results, setResults] = useState([]);
+
     return (
         <section className="relative bg-[var(--purple-transparent)] pt-8 pb-52">
-            <InputLink />
-            <div className="text-center mt-48 mb-32 px-6 center">
-                <h2 className="font-bold text-3xl mb-6 lg:text-4xl">
+            <InputLink results={results} setResults={setResults} />
+
+            <div
+                style={{ marginTop: results?.length === 0 ? "12rem" : "5rem" }}
+                className="text-center mb-32 center"
+            >
+                {results && (
+                    <ul className="mb-4 flex flex-col gap-4 text-sm">
+                        {results.map(r => (
+                            <Link key={r.id} data={r} />
+                        ))}
+                    </ul>
+                )}
+                <h2
+                    style={{ marginTop: results.length === 0 ? 0 : "100px" }}
+                    className="font-bold text-3xl mb-6 lg:text-4xl"
+                >
                     Advanced Statistics
                 </h2>
                 <p className="text-[var(--gray-500)] font-medium max-w-[540px] mx-auto leading-loose">
@@ -47,18 +63,71 @@ const Benefit = () => {
         </section>
     );
 };
-const InputLink = () => {
+const InputLink = ({ results, setResults }) => {
+    const [value, setValue] = useState("");
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const handleSubmit = async e => {
+        e.preventDefault();
+        setError(null);
+        if (!value.trim()) {
+            setError("Fill the empty field!");
+            return;
+        }
+        try {
+            setLoading(true);
+            const res = await fetch(
+                "https://corsproxy.io/?" +
+                    encodeURIComponent("https://cleanuri.com/api/v1/shorten"),
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ url: value.toLowerCase() })
+                }
+            );
+
+            const result = await res.json();
+            if (result?.result_url) {
+                setResults(prev => [
+                    ...prev,
+                    {
+                        id:
+                            prev.length === 0
+                                ? 1
+                                : prev[prev.length - 1].id + 1,
+                        long: value,
+                        short: result?.result_url
+                    }
+                ]);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
-        <form className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[75px] rounded-xl left-0 right-0 center">
-            <div className="p-6 bgInput lg:p-12 rounded-xl flex flex-col gap-4 bg-no-repeat bg-right-top *:rounded-lg lg:flex-row">
-                <input
-                    type="text"
-                    className="block p-4 w-auto lg:flex-1"
-                    placeholder="Shorten a link here..."
-                />
-                <button className="bg-[var(--blue-400)] p-4 capitalize font-bold text-white">
-                    Shorten It!
-                </button>
+        <form
+            onSubmit={handleSubmit}
+            className="bg-[var(--gray-900)] absolute -top-[90px] lg:-top-[75px] rounded-xl left-0 right-0 center"
+        >
+            <div className="p-6 bgInput lg:p-12 rounded-xl bg-no-repeat bg-cover bg-right-top">
+                <div className="flex flex-col gap-4 *:rounded-lg lg:flex-row">
+                    <input
+                        value={value}
+                        onChange={e => setValue(e.target.value)}
+                        type="text"
+                        className="block p-4 w-auto lg:flex-1"
+                        placeholder="Shorten a link here..."
+                    />
+                    <button
+                        disabled={loading}
+                        className="bg-[var(--blue-400)] p-4 transition-colors duration-200 capitalize font-bold text-white hover:bg-[var(--gray-400)] disabled:opacity-40"
+                    >
+                        {loading ? "Loading..." : "Shorten It!"}
+                    </button>
+                </div>
+                {error ? <p className="mt-4 text-red-600">{error}</p> : null}
             </div>
         </form>
     );
@@ -90,6 +159,35 @@ const BenefitList = () => {
                 </div>
             ))}
         </div>
+    );
+};
+
+const Link = ({ data }) => {
+    const [copy, setCopy] = useState(false);
+    const handleCopy = async text => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopy(true);
+            setTimeout(() => setCopy(false), 1000);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    return (
+        <li
+            className="bg-white rounded *:p-4 lg:*p-0 lg:p-4 text-left lg:flex lg:items-center font-medium shadow"
+            key={data.id}
+        >
+            <p className="border-b lg:flex-1">{data.long}</p>
+            <p className="text-[var(--blue-400)]">{data.short}</p>
+            <button
+                disabled={copy}
+                onClick={() => handleCopy(data.short)}
+                className="bg-[var(--blue-400)] block p-0 rounded-lg mx-auto w-[calc(100%-2rem)] lg:mb-0 lg:w-[150px] mb-4 font-bold text-white text-base disabled:bg-[var(--purple-950)] transition-colors duration-200 lg:ml-4"
+            >
+                {copy ? "copied" : "Copy"}
+            </button>
+        </li>
     );
 };
 export default Benefit;
